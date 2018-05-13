@@ -1,4 +1,4 @@
-package com.example.myapp;
+package edu.northeastern.cs4550;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

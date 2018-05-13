@@ -1,4 +1,4 @@
-package com.example.myapp;
+package edu.northeastern.cs4550;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
