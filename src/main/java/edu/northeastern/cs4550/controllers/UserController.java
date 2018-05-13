@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -17,6 +18,7 @@ import javax.validation.Valid;
 
 import edu.northeastern.cs4550.models.User;
 import edu.northeastern.cs4550.services.IUserService;
+import edu.northeastern.cs4550.utils.ResourceNotFoundException;
 
 @RestController
 @RequestMapping("/api/users")
@@ -40,6 +42,16 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<User> findUserByID(@PathVariable(value = "id") int id) {
         User foundUser = userService.findUserByID(id);
+        return ResponseEntity.ok(foundUser);
+    }
+
+    @GetMapping
+    public ResponseEntity<User> findUserByUsername(
+            @RequestParam(value = "username") String username) {
+        User foundUser = userService.findUserByUsername(username);
+        if (foundUser == null) {
+            throw new ResourceNotFoundException(User.class, "username", username);
+        }
         return ResponseEntity.ok(foundUser);
     }
 
