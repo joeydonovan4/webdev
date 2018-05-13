@@ -14,6 +14,8 @@ public interface IUserService {
 
     User findUserByUsername(String username);
 
+    User findUserByUsernameAndPassword(String username, String password);
+
     User updateUser(User user);
 
     User deleteUser(int id);

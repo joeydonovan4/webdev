@@ -41,6 +41,15 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public User findUserByUsernameAndPassword(String username, String password) {
+        User existingUser = userRepository.findByUsername(username);
+        if (existingUser == null) {
+            throw new ResourceNotFoundException(User.class, "username", username);
+        }
+        return userRepository.findByUsernameAndPassword(username, password);
+    }
+
+    @Override
     public User updateUser(User user) {
         User existingUser = findUserByID(user.getId());
 
