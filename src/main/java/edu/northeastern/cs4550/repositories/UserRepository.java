@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 import edu.northeastern.cs4550.models.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User,Integer> {}
+public interface UserRepository extends JpaRepository<User,Integer> {
+
+    User findByUsername(String username);
+}

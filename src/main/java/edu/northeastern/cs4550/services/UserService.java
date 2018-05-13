@@ -36,6 +36,15 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public User findUserByUsername(String username) {
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+            throw new ResourceNotFoundException(User.class, "username", username);
+        }
+        return user;
+    }
+
+    @Override
     public User updateUser(User user) {
         User existingUser = findUserByID(user.getId());
 
