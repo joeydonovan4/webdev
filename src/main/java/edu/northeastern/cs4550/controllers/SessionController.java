@@ -32,4 +32,10 @@ public class SessionController {
         session.setAttribute("user", user);
         return ResponseEntity.ok(user);
     }
+
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout(HttpSession session) {
+        session.invalidate();
+        return ResponseEntity.ok("Logged out.");
+    }
 }
