@@ -1,5 +1,6 @@
 function User(username, password, firstName, lastName, email, phone, role, dateOfBirth) {
     // user properties
+    this.id = 0;
     this.username = username;
     this.password = password;
     this.firstName = firstName;
@@ -10,6 +11,9 @@ function User(username, password, firstName, lastName, email, phone, role, dateO
     this.dateOfBirth = dateOfBirth;
 
     // user methods
+    this.setId = setId;
+    this.getId = getId;
+
     this.setUsername = setUsername;
     this.getUsername = getUsername;
 
@@ -35,6 +39,13 @@ function User(username, password, firstName, lastName, email, phone, role, dateO
     this.getDateOfBirth = getDateOfBirth;
 
     // user setters and getters
+    function setId(id) {
+        this.id = id;
+    }
+    function getId() {
+        return this.id;
+    }
+
     function setUsername(username) {
         this.username = username;
     }
