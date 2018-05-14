@@ -28,9 +28,32 @@
     }
 
     function findUserById() { … }
-    function deleteUser() { … }
+
+    function deleteUser(event) {
+        var deleteBtn = $(event.currentTarget);
+        var userId = deleteBtn.parent().parent().parent().attr('id');
+
+        userService.deleteUser(userId).then(findAllUsers);
+    }
+
     function selectUser() { … }
-    function updateUser() { … }
+
+    function updateUser(event) {
+        var editBtn = $(event.currentTarget);
+        var userId = editBtn.parent().parent().parent().attr('id');
+
+        var username = $('#usernameFld').val();
+        var password = $('#passwordFld').val();
+        var firstName = $('#firstNameFld').val();
+        var lastName = $('#lastNameFld').val();
+        var email = $('#emailFld').val();
+        var phone = $('#phoneFld').val();
+        var dateOfBirth = $('#dobFld').val();
+        var role = $('#roleFld').val();
+        var userObj = new User(username, password, firstName, lastName, email, phone, role, dateOfBirth)
+
+        userService.updateUser(userId, userObj).then(findAllUsers);
+    }
 
     function editAndDeleteButtonsHTML() {
         var buttons = '<td><div class="btn-group">' +
