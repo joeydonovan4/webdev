@@ -6,7 +6,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.security.access.AccessDeniedException;
+
+import java.nio.file.AccessDeniedException;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -22,7 +23,8 @@ public class ProfileController {
     private IUserService userService;
 
     @PutMapping
-    public ResponseEntity<User> updateProfile(@Valid @RequestBody User user, HttpSession session) {
+    public ResponseEntity<User> updateProfile(@Valid @RequestBody User user, HttpSession session)
+        throws AccessDeniedException {
         if (session.getAttribute("user") == null) {
             throw new AccessDeniedException("Unauthorized");
         }
