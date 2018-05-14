@@ -35,3 +35,14 @@
 .signup-form a {
     text-decoration: underline;
 }
+
+.signup-form .empty-input-error,
+.signup-form .already-in-use-error,
+.signup-form .not-matching-error {
+    display: none;
+    color: red;
+}
+
+input.invalid {
+	border: 2px solid red;
+}

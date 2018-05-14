@@ -12,6 +12,7 @@
             crossorigin="anonymous"></script>
     <script src="../../services/user.service.client.js"></script>
     <script src="../../models/user.model.client.js"></script>
+    <script src="register.controller.client.js"></script>
 </head>
 <body>
 <div class="signup-form">
@@ -21,23 +22,33 @@
             <div class="row">
                 <div class="col-6">
                     <input id="first-name-fld" type="text" class="form-control" name="first-name" placeholder="First Name" required/>
+                    <span class="small empty-input-error">First name is required</span>
                 </div>
                 <div class="col-6">
                     <input id="last-name-fld" type="text" class="form-control" name="last-name" placeholder="Last Name" required/>
+                    <span class="small empty-input-error">Last name is required</span>
                 </div>
             </div>
         </div>
         <div class="form-group">
             <input id="email-fld" type="email" class="form-control" name="email" placeholder="Email" required/>
+            <span class="small empty-input-error">A valid email address is required</span>
+            <span class="small already-in-use-error">This email address is already associated with an account</span>
         </div>
         <div class="form-group">
             <input id="username-fld" type="text" class="form-control" name="username" placeholder="Username" required/>
+            <span class="small empty-input-error">Username is required</span>
+            <span class="small already-in-use-error">This username is already in use. Please choose another</span>
         </div>
         <div class="form-group">
             <input id="password-fld" type="password" class="form-control" name="password" placeholder="Password" required/>
+            <span class="small empty-input-error">Password is required</span>
+            <span class="small not-matching-error">Passwords do not match</span>
         </div>
         <div class="form-group">
             <input id="password-verify-fld" type="password" class="form-control" name="password-verify" placeholder="Verify Password" required/>
+            <span class="small empty-input-error">Verification of password is required</span>
+            <span class="small not-matching-error">Passwords do not match</span>
         </div>
         <div class="form-group">
             <button id="register-btn" type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
