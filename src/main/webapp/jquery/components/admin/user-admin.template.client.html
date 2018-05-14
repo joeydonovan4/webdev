@@ -14,25 +14,33 @@
     <script src="user-admin.controller.client.js"></script>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
     <h1 id="title">User Admin</h1>
     <table class="table">
         <thead class="thead-light">
             <tr>
+                <th scope="col">#</th>
                 <th scope="col">Username</th>
                 <th scope="col">Password</th>
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Date of Birth</th>
                 <th scope="col">Role</th>
                 <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
             <tr>
+                <th scope="row">1</th>
                 <td><input id="usernameFld" class="form-control" placeholder="Username"/></td>
                 <td><input id="passwordFld" class="form-control" type="password" placeholder="Password"/></td>
                 <td><input id="firstNameFld" class="form-control" placeholder="First Name"/></td>
                 <td><input id="lastNameFld" class="form-control" placeholder="Last Name"/></td>
+                <td><input id="emailFld" class="form-control" type="email" placeholder="Email"/></td>
+                <td><input id="phoneFld" class="form-control" type="tel" placeholder="Phone"/></td>
+                <td><input id="dobFld" class="form-control" type="date" placeholder="Date of Birth"/></td>
                 <td>
                     <select class="form-control">
                         <option value="STUDENT">STUDENT</option>
