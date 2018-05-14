@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="register.style.client.css"/>
+    <title>Sign Up</title>
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="../../services/user.service.client.js"></script>
+    <script src="../../models/user.model.client.js"></script>
+</head>
+<body>
+<div class="signup-form">
+    <form>
+        <h2>Register</h2>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-6">
+                    <input id="first-name-fld" type="text" class="form-control" name="first-name" placeholder="First Name" required/>
+                </div>
+                <div class="col-6">
+                    <input id="last-name-fld" type="text" class="form-control" name="last-name" placeholder="Last Name" required/>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input id="email-fld" type="email" class="form-control" name="email" placeholder="Email" required/>
+        </div>
+        <div class="form-group">
+            <input id="username-fld" type="text" class="form-control" name="username" placeholder="Username" required/>
+        </div>
+        <div class="form-group">
+            <input id="password-fld" type="password" class="form-control" name="password" placeholder="Password" required/>
+        </div>
+        <div class="form-group">
+            <input id="password-verify-fld" type="password" class="form-control" name="password-verify" placeholder="Verify Password" required/>
+        </div>
+        <div class="form-group">
+            <button id="register-btn" type="submit" class="btn btn-success btn-lg btn-block">Register Now</button>
+        </div>
+    </form>
+    <div class="text-center">
+        Already have an account?
+        <a href="#">Sign In</a>
+    </div>
+</div>
+</body>
+</html>
