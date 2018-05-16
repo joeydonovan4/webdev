@@ -49,12 +49,25 @@
     function editProfile() {
         $('#edit-btn').hide();
         $('#save-changes-btn').show();
+        enableInputs(true);
+    }
+
+    function enableInputs(shouldEnable) {
         $('form').find(':input').each(function() {
-            $(this).prop('disabled', false);
+            $(this).prop('disabled', shouldEnable);
         });
     }
 
     function updateProfile() {
-        profileService.updateProfile();
+        profileService.updateProfile().then(function(response) {
+            if (response.ok) {
+                $('#edit-btn').show();
+                $('#save-changes-btn').hide();
+                enableInputs(false);
+            } else {
+                console.log('Error updating profile');
+                console.log(response);
+            }
+        });
     }
 })();
