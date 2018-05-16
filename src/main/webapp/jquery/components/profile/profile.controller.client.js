@@ -18,7 +18,8 @@
         $dateOfBirth = $('#dob-fld');
         $role = $('#role-fld');
 
-        $('#edit-btn').click(updateProfile);
+        $('#edit-btn').click(editProfile);
+        $('form').submit(updateProfile);
         $('#logout-btn').click(logout);
         getLoggedInUser();
     }
@@ -43,6 +44,14 @@
 
     function redirectToLogin() {
         document.location.href = loginPage;
+    }
+
+    function editProfile() {
+        $('#edit-btn').hide();
+        $('#save-changes-btn').show();
+        $('form').find(':input').each(function() {
+            $(this).prop('disabled', false);
+        });
     }
 
     function updateProfile() {
