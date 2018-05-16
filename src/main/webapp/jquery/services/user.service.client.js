@@ -4,22 +4,10 @@ function UserServiceClient() {
     this.deleteUser = deleteUser;
     this.findUserById = findUserById;
     this.updateUser = updateUser;
-    this.login = login;
     this.register = register;
     this.userURI = '/api/users';
-    this.loginURI = '/api/session/login';
     this.registerURI = '/api/register';
     var self = this;
-
-    function login(username, password) {
-        return fetch(self.loginURI, {
-            method: 'post',
-            body: JSON.stringify({username:username, password: password}),
-            headers: {
-                'content-type': 'application/json'
-            }
-        });
-    }
 
     function register(user) {
         return fetch(self.registerURI, {

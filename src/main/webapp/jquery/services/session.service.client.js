@@ -9,8 +9,14 @@ function SessionServiceClient() {
         return $.getJSON(self.sessionURI);
     }
 
-    function login() {
-
+    function login(username, password) {
+        return fetch(self.sessionURI + '/login', {
+            method: 'post',
+            body: JSON.stringify({username:username, password: password}),
+            headers: {
+                'content-type': 'application/json'
+            }
+        });
     }
 
     function logout() {
