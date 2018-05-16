@@ -6,7 +6,7 @@ function SessionServiceClient() {
     var self = this;
 
     function getLoggedInUser() {
-
+        return $.getJSON(self.sessionURI);
     }
 
     function login() {
