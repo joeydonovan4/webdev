@@ -1,0 +1,44 @@
+.profile-form {
+    width: 450px;
+    margin: 0 auto;
+    padding: 30px 0;
+}
+
+.profile-form form {
+    color: #999;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    background: #f2f3f7;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+}
+
+.profile-form h2 {
+    color: #636363;
+    margin: 0 0 15px;
+    position: relative;
+    text-align: center;
+}
+
+.profile-form .form-group {
+    margin-bottom: 20px;
+}
+
+.profile-form a {
+    text-decoration: underline;
+}
+
+.profile-form .empty-input-error,
+.profile-form .already-in-use-error,
+.profile-form .not-matching-error {
+    display: none;
+    color: red;
+}
+
+input.invalid {
+	border: 2px solid red;
+}
+
+#save-changes-btn {
+    display: none;
+}
