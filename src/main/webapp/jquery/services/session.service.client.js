@@ -20,6 +20,9 @@ function SessionServiceClient() {
     }
 
     function logout() {
-
+        return fetch(self.sessionURI + '/logout', {
+            method: 'post',
+            body: JSON.stringify({})
+        });
     }
 }
