@@ -33,12 +33,20 @@
         if (validateUser()) {
             sessionService.login($username.val(), $password.val())
                 .then(function(response) {
-                    if (response.ok) {
+                    var errorResponse;
+                    if (response.status == 200) {
                         redirectToProfile();
+                        return;
+                    } else if (response.status == 404) {
+                        errorResponse = 'Username not found!';
+                    } else if (response.status == 400) {
+                        errorResponse = 'Invalid password!';
                     } else {
-                        console.log('ERROR LOGGING IN');
-                        console.log(response);
+                        errorResponse = 'Something went wrong. Please try again.';
                     }
+                    response.json().then(function(error) {
+                        alert(errorResponse);
+                    });
                 });
         }
 
