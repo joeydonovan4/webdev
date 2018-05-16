@@ -25,7 +25,7 @@
     }
 
     function getLoggedInUser() {
-        profileService.getLoggedInUser().then(showUserData);
+        sessionService.getLoggedInUser().then(showUserData);
     }
 
     function showUserData(user) {
@@ -49,12 +49,12 @@
     function editProfile() {
         $('#edit-btn').hide();
         $('#save-changes-btn').show();
-        enableInputs(true);
+        disableInputs(false);
     }
 
-    function enableInputs(shouldEnable) {
-        $('form').find(':input').each(function() {
-            $(this).prop('disabled', shouldEnable);
+    function disableInputs(shouldDisable) {
+        $('form').find('input:disabled').each(function() {
+            $(this).prop('disabled', shouldDisable);
         });
     }
 
@@ -63,7 +63,7 @@
             if (response.ok) {
                 $('#edit-btn').show();
                 $('#save-changes-btn').hide();
-                enableInputs(false);
+                disableInputs(true);
             } else {
                 console.log('Error updating profile');
                 console.log(response);
