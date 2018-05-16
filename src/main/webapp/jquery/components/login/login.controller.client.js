@@ -1,12 +1,16 @@
 (function () {
-    var userService = new UserServiceClient();
+    var $username, $password;
+    var sessionService = new SessionServiceClient();
+    var profileURI = '/jquery/components/profile/profile.template.client.html';
     $(main);
 
     function main() {
         $('form').submit(login);
+        $username = $('#username-fld');
+        $password = $('#password-fld');
 
-        $('#username-fld').on('input', validateInput);
-        $('#password-fld').on('input', validateInput);
+        $username.on('input', validateInput);
+        $password.on('input', validateInput);
     }
 
     function validateInput() {
@@ -27,10 +31,22 @@
 
     function login(event) {
         if (validateUser()) {
-            userService.login($('#username-fld'), $('#password-fld'));
+            sessionService.login($username.val(), $password.val())
+                .then(function(response) {
+                    if (response.ok) {
+                        redirectToProfile();
+                    } else {
+                        console.log('ERROR LOGGING IN');
+                        console.log(response);
+                    }
+                });
         }
 
         event.preventDefault();
+    }
+
+    function redirectToProfile() {
+        document.location.href = profileURI;
     }
 
     function validateUser() {
