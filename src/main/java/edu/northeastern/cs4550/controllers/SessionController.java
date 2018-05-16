@@ -2,6 +2,7 @@ package edu.northeastern.cs4550.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,5 +38,11 @@ public class SessionController {
     public ResponseEntity<String> logout(HttpSession session) {
         session.invalidate();
         return ResponseEntity.ok("Logged out.");
+    }
+
+    @GetMapping
+    public ResponseEntity<User> getLoggedInUser(HttpSession session) {
+        User currentUser = (User) session.getAttribute("user");
+        return ResponseEntity.ok(currentUser);
     }
 }
