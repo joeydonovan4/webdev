@@ -28,13 +28,6 @@ function UserServiceClient() {
                 'content-type': 'application/json'
             },
             credentials: 'same-origin'
-        })
-        .then(function(response){
-            if(response.bodyUsed) {
-                return response.json();
-            } else {
-                return null;
-            }
         });
     }
 

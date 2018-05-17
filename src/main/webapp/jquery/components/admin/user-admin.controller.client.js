@@ -12,6 +12,7 @@
         $(document).on('click', '#delete-btn', deleteUser);
         $(document).on('click', '#edit-btn', editUser);
         $(document).on('click', '#save-btn', updateUser);
+        $(document).on('click', '#discard-btn', discardChanges);
         $('#edit-btn').click(editUser);
 
         findAllUsers();
@@ -133,6 +134,26 @@
                     '<button id="discard-btn" type="button" class="btn btn-secondary" title="Discard changes"><span class="fa fa-repeat"></span></button>' +
                     '<button id="save-btn" type="submit" class="btn btn-success" title="Save changes"><span class="fa fa-check"></span></button>' +
                     '</div>';
+    }
+
+    function discardChanges(event) {
+        var discardBtn = $(event.currentTarget);
+        var userId = discardBtn.parent().parent().parent().attr('id');
+        findUserById(userId).then(function(user) {
+            var userObj = new User(user.username,
+                                   user.password,
+                                   user.firstName,
+                                   user.lastName,
+                                   user.email,
+                                   user.phone,
+                                   user.role,
+                                   user.dateOfBirth);
+            userObj.setId(userId);
+            renderUser(userObj);
+            discardBtn.parent().parent().parent().remove();
+        });
+
+        event.preventDefault();
     }
 
     function renderUser(user) {
