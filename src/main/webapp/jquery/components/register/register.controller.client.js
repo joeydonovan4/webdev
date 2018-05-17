@@ -115,6 +115,6 @@
         var $usernameFld = fields[3].value;
         var $passwordFld = fields[4].value;
 
-        return new User($usernameFld, $passwordFld, $firstNameFld, $lastNameFld, $emailFld, null, 'STUDENT', null);
+        return new User($usernameFld, $passwordFld, $firstNameFld, $lastNameFld, $emailFld, null, 'Student', null);
     }
 })();
