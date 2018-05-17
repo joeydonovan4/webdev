@@ -35,7 +35,10 @@
         $username.val(user.username);
         $password.val(user.password);
         $phone.val(user.phone);
-        $dateOfBirth.val(user.dateOfBirth.split('T')[0]);
+        if (user.dateOfBirth !== null) {
+            $dateOfBirth.val(user.dateOfBirth.split('T')[0]);
+        }
+
         if (user.role === 'Student') {
             $('#role-fld')[0].options.selectedIndex = 0;
         } else if (user.role == 'Faculty') {
