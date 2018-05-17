@@ -1,7 +1,6 @@
 (function () {
-    var $usernameFld, $passwordFld, $verifyPasswordFld;
-    var $registerBtn;
     var userService = new UserServiceClient();
+    var profileURI = '/jquery/components/profile/profile.template.client.html';
     $(main);
 
     function main() {
@@ -47,10 +46,15 @@
 
     function register(event) {
         if (validateNewUser()) {
-            userService.register(getNewUser());
+            userService.register(getNewUser())
+                    .then(redirectToProfile);
         }
 
         event.preventDefault();
+    }
+
+    function redirectToProfile() {
+        document.location.href = profileURI;
     }
 
     function validateNewUser() {
