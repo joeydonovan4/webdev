@@ -58,8 +58,8 @@
         });
     }
 
-    function updateProfile() {
-        profileService.updateProfile().then(function(response) {
+    function updateProfile(event) {
+        profileService.updateProfile(generateUser()).then(function(response) {
             if (response.ok) {
                 $('#edit-btn').show();
                 $('#save-changes-btn').hide();
@@ -69,5 +69,18 @@
                 console.log(response);
             }
         });
+
+        event.preventDefault();
+    }
+
+    function generateUser() {
+        return new User($username.val(),
+                            $password.val(),
+                            $firstName.val(),
+                            $lastName.val(),
+                            $email.val(),
+                            $phone.val(),
+                            $role.val(),
+                            $dateOfBirth.val());
     }
 })();

@@ -25,10 +25,14 @@ public class ProfileController {
     @PutMapping
     public ResponseEntity<User> updateProfile(@Valid @RequestBody User user, HttpSession session)
         throws AccessDeniedException {
-        if (session.getAttribute("user") == null) {
+        Object attr = session.getAttribute("user");
+        if (attr == null) {
             throw new AccessDeniedException("Unauthorized");
         }
+        User currentUser = (User) attr;
+        user.setId(currentUser.getId());
         User updatedUser = userService.updateUser(user);
+        session.setAttribute("user", updatedUser);
         return ResponseEntity.ok(updatedUser);
     }
 }
