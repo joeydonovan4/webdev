@@ -35,7 +35,7 @@
         $username.val(user.username);
         $password.val(user.password);
         $phone.val(user.phone);
-        $dateOfBirth.val(user.dateOfBirth);
+        $dateOfBirth.val(user.dateOfBirth.split('T')[0]);
     }
 
     function logout() {
