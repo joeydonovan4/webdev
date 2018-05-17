@@ -42,3 +42,8 @@ input.invalid {
 #save-changes-btn {
     display: none;
 }
+
+#failure-alert,
+#success-alert {
+    display: none;
+}

@@ -60,8 +60,10 @@
     }
 
     function disableInputs(shouldDisable) {
-        $('form').find('input:disabled').each(function() {
-            $(this).prop('disabled', shouldDisable);
+        $('form').find(':input').each(function() {
+            if (!$(this).hasClass('btn')) {
+                $(this).prop('disabled', shouldDisable);
+            }
         });
         $('select:disabled').prop('disabled', shouldDisable);
     }
@@ -72,9 +74,10 @@
                 $('#edit-btn').show();
                 $('#save-changes-btn').hide();
                 disableInputs(true);
+                $('#success-alert').show();
             } else {
                 console.log('Error updating profile');
-                console.log(response);
+                $('#failure-alert').show();
             }
         });
 
