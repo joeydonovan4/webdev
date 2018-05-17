@@ -11,7 +11,7 @@
         $('#email-fld').focusout(validateEmail);
         $('#username-fld').on('input', validateInput);
         $('#password-fld').on('input', validateInput);
-        $('#password-verify-fld').on('input', validateInput);
+        $('#password-verify-fld').on('input', validatePassword);
     }
 
     function validateInput() {
@@ -40,6 +40,22 @@
         }
     }
 
+    function validatePassword() {
+        var input=$(this);
+        var verification_pw=input.val();
+        if (verification_pw !== $('#password-fld').val()) {
+            input.addClass('invalid');
+            $('form').find('.not-matching-error').each(function() {
+                $(this).show();
+            });
+        } else {
+            input.removeClass('invalid');
+            $('form').find('.not-matching-error').each(function() {
+                $(this).hide();
+            });
+        }
+    }
+
     function isValid(field) {
         return !field.hasClass("invalid");
     }
@@ -65,8 +81,16 @@
         var $passwordFld = $('#password-fld');
         var $passwordVerifyFld = $('#password-verify-fld');
 
+        if (!passwordsMatch($passwordFld, $passwordVerifyFld)) {
+            $('.not-matching-error')
+        }
+
         return isValid($firstNameFld) && isValid($lastNameFld) && isValid($emailFld) &&
             isValid($usernameFld) && isValid($passwordFld) && isValid($passwordVerifyFld);
+    }
+
+    function passwordsMatch(pw, verify) {
+        return pw === verify;
     }
 
     function getNewUser() {
