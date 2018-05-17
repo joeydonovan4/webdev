@@ -12,6 +12,7 @@
             crossorigin="anonymous"></script>
 
     <script src="../../services/user.service.client.js"></script>
+    <script src="../../models/user.model.client.js"></script>
     <script src="user-admin.controller.client.js"></script>
 </head>
 <body>
@@ -32,23 +33,23 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td><input id="usernameFld" class="form-control" placeholder="Username"/></td>
-                <td><input id="passwordFld" class="form-control" type="password" placeholder="Password"/></td>
-                <td><input id="firstNameFld" class="form-control" placeholder="First Name"/></td>
-                <td><input id="lastNameFld" class="form-control" placeholder="Last Name"/></td>
-                <td><input id="emailFld" class="form-control" type="email" placeholder="Email"/></td>
-                <td><input id="phoneFld" class="form-control" type="tel" placeholder="Phone"/></td>
-                <td><input id="dobFld" class="form-control" type="date" placeholder="Date of Birth"/></td>
+            <tr id="new-user-template">
+                <td><input id="username-fld" class="form-control" placeholder="Username"/></td>
+                <td><input id="password-fld" class="form-control" type="password" placeholder="Password"/></td>
+                <td><input id="first-name-fld" class="form-control" placeholder="First Name"/></td>
+                <td><input id="last-name-fld" class="form-control" placeholder="Last Name"/></td>
+                <td><input id="email-fld" class="form-control" type="email" placeholder="Email"/></td>
+                <td><input id="phone-fld" class="form-control" type="tel" placeholder="Phone"/></td>
+                <td><input id="dob-fld" class="form-control" type="date" placeholder="Date of Birth"/></td>
                 <td>
-                    <select class="form-control">
-                        <option value="STUDENT">STUDENT</option>
-                        <option value="FACULTY">FACULTY</option>
+                    <select id="role-fld" class="form-control">
+                        <option>Student</option>
+                        <option>Faculty</option>
                     </select>
                 </td>
                 <td><div class="btn-group">
-                    <button type="button" class="btn btn-secondary"><span class="fa fa-times"></span></button>
-                    <button type="button" class="btn btn-success"><span class="fa fa-plus"></span></button>
+                    <button id="reset-btn" type="button" class="btn btn-secondary" title="Reset"><span class="fa fa-times"></span></button>
+                    <button id="add-btn" type="button" class="btn btn-success" title="Create new user"><span class="fa fa-plus"></span></button>
                 </div></td>
             </tr>
             <tr id="user-template"></tr>

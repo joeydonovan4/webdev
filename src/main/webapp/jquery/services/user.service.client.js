@@ -62,7 +62,7 @@ function UserServiceClient() {
     }
 
     function createUser(user) {
-        return fetch(self.url, {
+        return fetch(self.userURI, {
             method: 'post',
             body: JSON.stringify(user),
             headers: {
