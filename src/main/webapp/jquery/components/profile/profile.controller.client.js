@@ -36,6 +36,13 @@
         $password.val(user.password);
         $phone.val(user.phone);
         $dateOfBirth.val(user.dateOfBirth.split('T')[0]);
+        if (user.role === 'Student') {
+            $('#role-fld')[0].options.selectedIndex = 0;
+        } else if (user.role == 'Faculty') {
+            $('#role-fld')[0].options.selectedIndex = 1;
+        } else {
+            $('#role-fld')[0].options.selectedIndex = 2;
+        }
     }
 
     function logout() {
@@ -56,6 +63,7 @@
         $('form').find('input:disabled').each(function() {
             $(this).prop('disabled', shouldDisable);
         });
+        $('select:disabled').prop('disabled', shouldDisable);
     }
 
     function updateProfile(event) {
