@@ -62,8 +62,22 @@
 
     function register(event) {
         if (validateNewUser()) {
-            userService.register(getNewUser())
-                    .then(redirectToProfile);
+            userService.register(getNewUser()).then(function(response) {
+                if (response.ok) {
+                    redirectToProfile();
+                } else if (response.status === 400) {
+                    response.json().then(function(error) {
+                        console.log(error.apierror.message);
+                        $('#username-fld').addClass('invalid');
+                        alert(error.apierror.message);
+                    });
+                } else {
+                    response.json().then(function(error) {
+                        console.log(error.apierror.message);
+                        alert(error.apierror.message);
+                    });
+                }
+            });
         }
 
         event.preventDefault();
