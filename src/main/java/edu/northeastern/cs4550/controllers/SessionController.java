@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.security.auth.login.FailedLoginException;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -24,14 +23,14 @@ public class SessionController {
     private IUserService userService;
 
     @PostMapping("/login")
-    public ResponseEntity<User> login(@Valid @RequestBody User user, HttpServletRequest request)
+    public ResponseEntity<User> login(@Valid @RequestBody User user, HttpSession session)
             throws FailedLoginException{
         User existingUser =
                 userService.findUserByUsernameAndPassword(user.getUsername(), user.getPassword());
         if (existingUser == null) {
             throw new FailedLoginException("Incorrect password.");
         }
-        request.getServletContext().setAttribute("user", existingUser);
+        session.setAttribute("user", existingUser);
         return ResponseEntity.ok(user);
     }
 
@@ -42,8 +41,8 @@ public class SessionController {
     }
 
     @GetMapping
-    public ResponseEntity<User> getLoggedInUser(HttpServletRequest request) {
-        User currentUser = (User) request.getServletContext().getAttribute("user");
+    public ResponseEntity<User> getLoggedInUser(HttpSession session) {
+        User currentUser = (User) session.getAttribute("user");
         return ResponseEntity.ok(currentUser);
     }
 }

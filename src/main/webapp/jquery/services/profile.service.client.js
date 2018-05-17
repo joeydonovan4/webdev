@@ -9,7 +9,8 @@ function ProfileServiceClient() {
             body: JSON.stringify(user),
             headers: {
                 'content-type': 'application/json'
-            }
+            },
+            credentials: 'same-origin'
         });
     }
 }

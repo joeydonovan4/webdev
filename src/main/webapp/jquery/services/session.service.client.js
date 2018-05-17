@@ -6,7 +6,11 @@ function SessionServiceClient() {
     var self = this;
 
     function getLoggedInUser() {
-        return $.getJSON(self.sessionURI);
+        return fetch(self.sessionURI, {
+            credentials: 'same-origin'
+        }).then(function(response) {
+            return response.json();
+        });
     }
 
     function login(username, password) {
@@ -15,14 +19,16 @@ function SessionServiceClient() {
             body: JSON.stringify({username:username, password: password}),
             headers: {
                 'content-type': 'application/json'
-            }
+            },
+            credentials: 'same-origin'
         });
     }
 
     function logout() {
         return fetch(self.sessionURI + '/logout', {
             method: 'post',
-            body: JSON.stringify({})
+            body: JSON.stringify({}),
+            credentials: 'same-origin'
         });
     }
 }

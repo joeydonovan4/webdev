@@ -15,7 +15,8 @@ function UserServiceClient() {
             body: JSON.stringify(user),
             headers: {
                 'content-type': 'application/json'
-            }
+            },
+            credentials: 'same-origin'
         });
     }
 
@@ -25,7 +26,8 @@ function UserServiceClient() {
             body: JSON.stringify(user),
             headers: {
                 'content-type': 'application/json'
-            }
+            },
+            credentials: 'same-origin'
         })
         .then(function(response){
             if(response.bodyUsed) {
@@ -37,17 +39,26 @@ function UserServiceClient() {
     }
 
     function findUserById(userId) {
-        return $.getJSON(self.userURI + '/' + userId);
+        return fetch(self.userURI + '/' + userId, {
+            credentials: 'same-origin'
+        }).then(function(response) {
+            return response.json();
+        });
     }
 
     function deleteUser(userId) {
         return fetch(self.userURI + '/' + userId, {
-            method: 'delete'
+            method: 'delete',
+            credentials: 'same-origin'
         });
     }
 
     function findAllUsers() {
-        return $.getJSON(self.userURI);
+        return fetch(self.userURI + '/all', {
+            credentials: 'same-origin'
+        }).then(function(response) {
+            return response.json();
+        });
     }
 
     function createUser(user) {
@@ -56,7 +67,8 @@ function UserServiceClient() {
             body: JSON.stringify(user),
             headers: {
                 'content-type': 'application/json'
-            }
+            },
+            credentials: 'same-origin'
         });
     }
 }
