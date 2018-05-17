@@ -11,6 +11,17 @@
 
         $username.on('input', validateInput);
         $password.on('input', validateInput);
+
+        getLoggedInUser();
+    }
+
+    function getLoggedInUser() {
+        sessionService.getLoggedInUser().then(function(response) {
+            if (response !== null) {
+                console.log('User already logged in. Redirecting to profile page.');
+                redirectToProfile();
+            }
+        });
     }
 
     function validateInput() {
