@@ -25,7 +25,14 @@
     }
 
     function getLoggedInUser() {
-        sessionService.getLoggedInUser().then(showUserData);
+        sessionService.getLoggedInUser().then(function(user) {
+            if (user !== null) {
+                showUserData(user);
+            } else {
+                console.log('No user logged in. Redirecting to login page.');
+                redirectToLogin();
+            }
+        });
     }
 
     function showUserData(user) {

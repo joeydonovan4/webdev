@@ -43,6 +43,7 @@ public class SessionController {
     @GetMapping
     public ResponseEntity<User> getLoggedInUser(HttpSession session) {
         User currentUser = (User) session.getAttribute("user");
+        if (currentUser == null) return ResponseEntity.notFound().build();
         return ResponseEntity.ok(currentUser);
     }
 }

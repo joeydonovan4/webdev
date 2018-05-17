@@ -16,8 +16,8 @@
     }
 
     function getLoggedInUser() {
-        sessionService.getLoggedInUser().then(function(response) {
-            if (response !== null) {
+        sessionService.getLoggedInUser().then(function(user) {
+            if (user !== null) {
                 console.log('User already logged in. Redirecting to profile page.');
                 redirectToProfile();
             }

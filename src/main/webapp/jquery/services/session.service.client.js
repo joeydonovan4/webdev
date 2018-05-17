@@ -9,7 +9,10 @@ function SessionServiceClient() {
         return fetch(self.sessionURI, {
             credentials: 'same-origin'
         }).then(function(response) {
-            return response.json();
+            if (response.ok) {
+                return response.json();
+            }
+            return null;
         });
     }
 
