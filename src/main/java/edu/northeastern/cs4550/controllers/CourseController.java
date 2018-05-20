@@ -16,8 +16,10 @@ import java.util.List;
 import javax.validation.Valid;
 
 import edu.northeastern.cs4550.models.Course;
+import edu.northeastern.cs4550.models.Lesson;
 import edu.northeastern.cs4550.models.Module;
 import edu.northeastern.cs4550.services.ICourseService;
+import edu.northeastern.cs4550.services.ILessonService;
 import edu.northeastern.cs4550.services.IModuleService;
 
 @RestController
@@ -29,6 +31,9 @@ public class CourseController {
 
     @Autowired
     private IModuleService moduleService;
+
+    @Autowired
+    private ILessonService lessonService;
 
     @PostMapping
     public ResponseEntity<Course> createCourse(@Valid @RequestBody Course course) {
@@ -76,5 +81,20 @@ public class CourseController {
             @PathVariable(value = "id") int courseId) {
         List<Module> courseModules = moduleService.findAllModulesForCourse(courseId);
         return ResponseEntity.ok(courseModules);
+    }
+
+    @PostMapping("/{cid}/modules/{mid}/lessons")
+    public ResponseEntity<Lesson> createLesson(@PathVariable(value = "cid") int courseId,
+                                               @PathVariable(value = "mid") int moduleId,
+                                               @Valid @RequestBody Lesson lesson) {
+        Lesson createdLesson = lessonService.createLesson(courseId, moduleId, lesson);
+        return ResponseEntity.ok(createdLesson);
+    }
+
+    @GetMapping("/{cid}/modules/{mid}/lessons")
+    public ResponseEntity<List<Lesson>> findAllLessonsForCourseModule(
+            @PathVariable(value = "cid") int courseId, @PathVariable(value = "mid") int moduleId) {
+        List<Lesson> moduleLessons = lessonService.findAllLessonsForCourseModule(courseId, moduleId);
+        return ResponseEntity.ok(moduleLessons);
     }
 }
