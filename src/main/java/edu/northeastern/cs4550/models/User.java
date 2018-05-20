@@ -1,6 +1,5 @@
 package edu.northeastern.cs4550.models;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -12,7 +11,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class User implements Serializable {
+public class User extends Audit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
