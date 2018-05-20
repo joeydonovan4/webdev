@@ -7,7 +7,7 @@ import edu.northeastern.cs4550.models.Module;
 
 public interface IModuleService {
 
-    Module createModule(Module module);
+    Module createModule(int courseId, Module module);
 
     Module deleteModule(int id);
 
