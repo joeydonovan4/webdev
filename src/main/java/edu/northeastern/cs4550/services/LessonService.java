@@ -61,7 +61,13 @@ public class LessonService implements ILessonService {
     }
 
     @Override
-    public List<Lesson> findAllLessonsForModule(int moduleId) {
+    public List<Lesson> findAllLessonsForCourseModule(int courseId, int moduleId) {
+        if (!courseRepository.existsById(courseId)) {
+            throw new ResourceNotFoundException(Course.class, "id", Integer.toString(courseId));
+        }
+        if (!moduleRepository.existsById(moduleId)) {
+            throw new ResourceNotFoundException(Module.class, "id", Integer.toString(moduleId));
+        }
         return lessonRepository.findByModuleId(moduleId);
     }
 

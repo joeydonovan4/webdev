@@ -14,7 +14,7 @@ public interface ILessonService {
 
     Lesson findLessonById(int id);
 
-    List<Lesson> findAllLessonsForModule(int moduleId);
+    List<Lesson> findAllLessonsForCourseModule(int courseId, int moduleId);
 
     Lesson updateLesson(Lesson lesson);
 }

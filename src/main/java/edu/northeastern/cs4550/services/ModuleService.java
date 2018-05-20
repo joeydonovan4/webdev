@@ -53,6 +53,9 @@ public class ModuleService implements IModuleService {
 
     @Override
     public List<Module> findAllModulesForCourse(int courseId) {
+        if (!courseRepository.existsById(courseId)) {
+            throw new ResourceNotFoundException(Course.class, "id", Integer.toString(courseId));
+        }
         return moduleRepository.findByCourseId(courseId);
     }
 
