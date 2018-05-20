@@ -6,7 +6,6 @@ import org.springframework.data.annotation.LastModifiedDate;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,7 +26,7 @@ public class Course {
 
     private String title;
 
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "course")
     private List<Module> modules;
 
     @Temporal(TemporalType.TIMESTAMP)
