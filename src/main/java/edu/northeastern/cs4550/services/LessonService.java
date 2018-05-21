@@ -28,15 +28,14 @@ public class LessonService implements ILessonService {
 
     @Override
     public Lesson createLesson(int courseId, int moduleId, Lesson lesson) {
-        return courseRepository.findById(courseId).map(course -> {
-            return moduleRepository.findById(moduleId).map(module -> {
-                module.setCourse(course);
-                lesson.setModule(module);
-                return lessonRepository.save(lesson);
-            }).orElseThrow(() ->
-                    new ResourceNotFoundException(Module.class, "id", Integer.toString(moduleId)));
-        }).orElseThrow(() ->
+        Course course = courseRepository.findById(courseId).orElseThrow(() ->
                 new ResourceNotFoundException(Course.class, "id", Integer.toString(courseId)));
+        return moduleRepository.findById(moduleId).map(module -> {
+            module.setCourse(course);
+            lesson.setModule(module);
+            return lessonRepository.save(lesson);
+        }).orElseThrow(() ->
+                new ResourceNotFoundException(Module.class, "id", Integer.toString(moduleId)));
     }
 
     @Override
