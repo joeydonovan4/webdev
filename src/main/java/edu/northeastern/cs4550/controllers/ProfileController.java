@@ -2,6 +2,7 @@ package edu.northeastern.cs4550.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import edu.northeastern.cs4550.services.IUserService;
 
 @RestController
 @RequestMapping("/api/profile")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class ProfileController {
 
     @Autowired
