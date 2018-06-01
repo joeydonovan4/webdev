@@ -17,8 +17,10 @@ import java.util.List;
 import javax.validation.Valid;
 
 import edu.northeastern.cs4550.models.Lesson;
+import edu.northeastern.cs4550.models.Topic;
 import edu.northeastern.cs4550.models.Widget;
 import edu.northeastern.cs4550.services.ILessonService;
+import edu.northeastern.cs4550.services.ITopicService;
 import edu.northeastern.cs4550.services.IWidgetService;
 
 @RestController
@@ -31,6 +33,9 @@ public class LessonController {
 
     @Autowired
     private IWidgetService widgetService;
+
+    @Autowired
+    private ITopicService topicService;
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Lesson> deleteLesson(@PathVariable(value = "id") int id) {
@@ -58,6 +63,13 @@ public class LessonController {
         }
         Lesson updatedLesson = lessonService.updateLesson(lesson);
         return ResponseEntity.ok(updatedLesson);
+    }
+
+    @PostMapping("/{lid}/topics")
+    public ResponseEntity<Topic> createTopic(@PathVariable(value = "lid") int lessonId,
+                                             @Valid @RequestBody Topic topic) {
+        Topic createdTopic = topicService.createTopic(lessonId, topic);
+        return ResponseEntity.ok(createdTopic);
     }
 
     @PostMapping("/{lid}/topics/{tid}/widgets")
