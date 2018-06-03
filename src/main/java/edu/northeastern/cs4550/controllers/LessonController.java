@@ -72,6 +72,13 @@ public class LessonController {
         return ResponseEntity.ok(createdTopic);
     }
 
+    @GetMapping("/{lid}/topics")
+    public ResponseEntity<List<Topic>> findAllTopicsForLesson(
+            @PathVariable(value = "lid") int lessonId) {
+        List<Topic> topics = topicService.findAllTopicsForLesson(lessonId);
+        return ResponseEntity.ok(topics);
+    }
+
     @PostMapping("/{lid}/topics/{tid}/widgets")
     public ResponseEntity<Widget> createWidget(@PathVariable(value = "lid") int lessonId,
                                                @PathVariable(value = "tid") int topicId,
