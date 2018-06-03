@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,10 +24,11 @@ public class Module extends Audit {
 
     private String title;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     private Course course;
 
-    @OneToMany(mappedBy = "module")
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "module", orphanRemoval = true)
     private List<Lesson> lessons;
 }

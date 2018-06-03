@@ -1,8 +1,11 @@
 package edu.northeastern.cs4550.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,6 +23,7 @@ public class Course extends Audit {
 
     private String title;
 
-    @OneToMany(mappedBy = "course")
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "course", orphanRemoval = true)
     private List<Module> modules;
 }
