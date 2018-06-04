@@ -1,6 +1,8 @@
 package edu.northeastern.cs4550.models.widget;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -16,12 +18,25 @@ import javax.persistence.ManyToOne;
 
 import edu.northeastern.cs4550.models.Audit;
 import edu.northeastern.cs4550.models.Topic;
+import edu.northeastern.cs4550.models.exam.Exam;
 import lombok.Data;
 
 @Entity
 @Data
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "widget_type", discriminatorType = DiscriminatorType.STRING)
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "widgetType",
+        visible = true)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = Heading.class, name = "Heading"),
+        @JsonSubTypes.Type(value = Paragraph.class, name = "Paragraph"),
+        @JsonSubTypes.Type(value = Image.class, name = "Image"),
+        @JsonSubTypes.Type(value = Link.class, name = "Link"),
+        @JsonSubTypes.Type(value = List.class, name = "List"),
+        @JsonSubTypes.Type(value = Exam.class, name = "Exam")})
 public abstract class Widget extends Audit {
 
     @Id
