@@ -36,7 +36,8 @@ import lombok.Data;
         @JsonSubTypes.Type(value = Image.class, name = "Image"),
         @JsonSubTypes.Type(value = Link.class, name = "Link"),
         @JsonSubTypes.Type(value = List.class, name = "List"),
-        @JsonSubTypes.Type(value = Exam.class, name = "Exam")})
+        @JsonSubTypes.Type(value = Exam.class, name = "Exam"),
+        @JsonSubTypes.Type(value = Assignment.class, name = "Assignment")})
 public abstract class Widget extends Audit {
 
     @Id
