@@ -15,7 +15,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import edu.northeastern.cs4550.models.Widget;
+import edu.northeastern.cs4550.models.widget.Widget;
 import edu.northeastern.cs4550.services.IWidgetService;
 
 @RestController

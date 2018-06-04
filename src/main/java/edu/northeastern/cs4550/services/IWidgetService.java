@@ -2,7 +2,7 @@ package edu.northeastern.cs4550.services;
 
 import java.util.List;
 
-import edu.northeastern.cs4550.models.Widget;
+import edu.northeastern.cs4550.models.widget.Widget;
 
 public interface IWidgetService {
 

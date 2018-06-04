@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import edu.northeastern.cs4550.models.widget.Widget;
 import lombok.Data;
 
 @Entity

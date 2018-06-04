@@ -18,7 +18,7 @@ import javax.validation.Valid;
 
 import edu.northeastern.cs4550.models.Lesson;
 import edu.northeastern.cs4550.models.Topic;
-import edu.northeastern.cs4550.models.Widget;
+import edu.northeastern.cs4550.models.widget.Widget;
 import edu.northeastern.cs4550.services.ILessonService;
 import edu.northeastern.cs4550.services.ITopicService;
 import edu.northeastern.cs4550.services.IWidgetService;

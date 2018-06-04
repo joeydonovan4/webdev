@@ -8,7 +8,7 @@ import java.util.Optional;
 
 import edu.northeastern.cs4550.models.Lesson;
 import edu.northeastern.cs4550.models.Topic;
-import edu.northeastern.cs4550.models.Widget;
+import edu.northeastern.cs4550.models.widget.Widget;
 import edu.northeastern.cs4550.repositories.TopicRepository;
 import edu.northeastern.cs4550.repositories.WidgetRepository;
 import edu.northeastern.cs4550.utils.ResourceNotFoundException;
@@ -72,15 +72,9 @@ public class WidgetService implements IWidgetService {
         existingWidget.setName(widget.getName());
         existingWidget.setOrder(widget.getOrder());
         existingWidget.setText(widget.getText());
-        existingWidget.setClassName(widget.getClassName());
         existingWidget.setStyle(widget.getStyle());
         existingWidget.setWidth(widget.getWidth());
         existingWidget.setHeight(widget.getHeight());
-        existingWidget.setSize(widget.getSize());
-        existingWidget.setHref(widget.getHref());
-        existingWidget.setSrc(widget.getSrc());
-        existingWidget.setListItems(widget.getListItems());
-        existingWidget.setListType(widget.getListType());
         existingWidget.setTopic(widget.getTopic());
         widgetRepository.save(existingWidget);
         return existingWidget;
