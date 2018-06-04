@@ -1,6 +1,8 @@
 package edu.northeastern.cs4550.models.exam;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -20,6 +22,16 @@ import lombok.Data;
 @Data
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "question_type", discriminatorType = DiscriminatorType.STRING)
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "questionType",
+        visible = true)
+@JsonSubTypes({
+        @JsonSubTypes.Type(value = EssayQuestion.class, name = "Essay"),
+        @JsonSubTypes.Type(value = FillInTheBlanksQuestion.class, name = "FillInTheBlanks"),
+        @JsonSubTypes.Type(value = MultipleChoiceQuestion.class, name = "MultipleChoice"),
+        @JsonSubTypes.Type(value = TrueOrFalseQuestion.class, name = "TrueOrFalse")})
 public abstract class ExamQuestion extends Audit {
 
     @Id
