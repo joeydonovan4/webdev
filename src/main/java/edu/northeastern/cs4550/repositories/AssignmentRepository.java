@@ -1,9 +1,8 @@
 package edu.northeastern.cs4550.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import edu.northeastern.cs4550.models.widget.Assignment;
 
-@Repository
-public interface AssignmentRepository extends JpaRepository<Assignment,Integer> {}
+@Transactional
+public interface AssignmentRepository extends BaseWidgetRepository<Assignment> {}
