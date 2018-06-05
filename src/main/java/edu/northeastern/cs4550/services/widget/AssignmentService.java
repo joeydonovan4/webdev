@@ -1,4 +1,4 @@
-package edu.northeastern.cs4550.services;
+package edu.northeastern.cs4550.services.widget;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +8,7 @@ import java.util.List;
 import edu.northeastern.cs4550.models.Topic;
 import edu.northeastern.cs4550.models.widget.Assignment;
 import edu.northeastern.cs4550.repositories.widget.AssignmentRepository;
+import edu.northeastern.cs4550.services.ITopicService;
 import edu.northeastern.cs4550.utils.ResourceNotFoundException;
 
 @Service

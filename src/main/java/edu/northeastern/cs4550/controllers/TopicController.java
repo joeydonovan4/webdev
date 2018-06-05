@@ -15,8 +15,8 @@ import javax.validation.Valid;
 
 import edu.northeastern.cs4550.models.widget.Assignment;
 import edu.northeastern.cs4550.models.widget.Widget;
-import edu.northeastern.cs4550.services.IAssignmentService;
-import edu.northeastern.cs4550.services.IWidgetService;
+import edu.northeastern.cs4550.services.widget.IAssignmentService;
+import edu.northeastern.cs4550.services.widget.IWidgetService;
 import lombok.Getter;
 import lombok.Setter;
 

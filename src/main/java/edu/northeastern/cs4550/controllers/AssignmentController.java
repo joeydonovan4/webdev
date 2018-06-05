@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import edu.northeastern.cs4550.models.widget.Assignment;
-import edu.northeastern.cs4550.services.IAssignmentService;
+import edu.northeastern.cs4550.services.widget.IAssignmentService;
 
 @RestController
 @RequestMapping("/api/assignments")

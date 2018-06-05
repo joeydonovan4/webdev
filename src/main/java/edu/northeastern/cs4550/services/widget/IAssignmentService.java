@@ -1,4 +1,4 @@
-package edu.northeastern.cs4550.services;
+package edu.northeastern.cs4550.services.widget;
 
 import java.util.List;
 

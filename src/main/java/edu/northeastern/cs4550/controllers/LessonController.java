@@ -21,7 +21,7 @@ import edu.northeastern.cs4550.models.Topic;
 import edu.northeastern.cs4550.models.widget.Widget;
 import edu.northeastern.cs4550.services.ILessonService;
 import edu.northeastern.cs4550.services.ITopicService;
-import edu.northeastern.cs4550.services.IWidgetService;
+import edu.northeastern.cs4550.services.widget.IWidgetService;
 
 @RestController
 @RequestMapping("/api/lessons")
