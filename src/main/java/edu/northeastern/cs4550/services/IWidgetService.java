@@ -17,4 +17,6 @@ public interface IWidgetService {
     List<Widget> findAllWidgetsForLessonTopic(int lessonId, int topicId);
 
     Widget updateWidget(Widget widget);
+
+    List<Widget> saveWidgets(int topicId, List<Widget> widgets);
 }

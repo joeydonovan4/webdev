@@ -3,6 +3,7 @@ package edu.northeastern.cs4550.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -78,5 +79,19 @@ public class WidgetService implements IWidgetService {
         existingWidget.setTopic(widget.getTopic());
         widgetRepository.save(existingWidget);
         return existingWidget;
+    }
+
+    @Override
+    public List<Widget> saveWidgets(int topicId, List<Widget> widgets) {
+        return topicRepository.findById(topicId).map(topic -> {
+            widgetRepository.deleteByTopicId(topicId);
+            List<Widget> savedWidgets = new ArrayList<>();
+            for (Widget w : widgets) {
+                w.setTopic(topic);
+                savedWidgets.add(widgetRepository.save(w));
+            }
+            return savedWidgets;
+        }).orElseThrow(() ->
+                new ResourceNotFoundException(Topic.class, "id", Integer.toString(topicId)));
     }
 }
