@@ -10,7 +10,7 @@ import edu.northeastern.cs4550.models.Lesson;
 import edu.northeastern.cs4550.models.Topic;
 import edu.northeastern.cs4550.models.widget.Widget;
 import edu.northeastern.cs4550.repositories.TopicRepository;
-import edu.northeastern.cs4550.repositories.WidgetRepository;
+import edu.northeastern.cs4550.repositories.widget.WidgetRepository;
 import edu.northeastern.cs4550.utils.ResourceNotFoundException;
 
 @Service

@@ -1,4 +1,4 @@
-package edu.northeastern.cs4550.repositories;
+package edu.northeastern.cs4550.repositories.widget;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
