@@ -1,4 +1,4 @@
-package edu.northeastern.cs4550.models.exam;
+package edu.northeastern.cs4550.models.widget.exam;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;

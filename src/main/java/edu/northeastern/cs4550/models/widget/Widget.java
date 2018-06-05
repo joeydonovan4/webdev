@@ -18,7 +18,7 @@ import javax.persistence.ManyToOne;
 
 import edu.northeastern.cs4550.models.Audit;
 import edu.northeastern.cs4550.models.Topic;
-import edu.northeastern.cs4550.models.exam.Exam;
+import edu.northeastern.cs4550.models.widget.exam.Exam;
 import lombok.Data;
 
 @Entity
